@@ -34,19 +34,8 @@ public class GameHandController {
     }
 
     public void play(Game game) {
-        logger.log("-----------------------------------------");
-        logger.logImportant("Game Hand #" + (game.gameHandsCount() + 1));
-        logger.log("-----------------------------------------");
         GameHand gameHand = createGameHand(game);
-
-        Boolean haveWinner = false;
-        while (!gameHand.getBettingRoundName().equals(BettingRoundName.POST_RIVER) && !haveWinner) {
-            haveWinner = playRound(gameHand);
-        }
-
-        if (!haveWinner) {
-            showDown(gameHand);
-        }
+        playWithGameHand(game, gameHand);
     }
 
     private GameHand createGameHand(Game game) {

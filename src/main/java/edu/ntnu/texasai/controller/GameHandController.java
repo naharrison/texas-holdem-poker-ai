@@ -40,7 +40,6 @@ public class GameHandController {
 
     private GameHand createGameHand(Game game) {
         GameHand gameHand = new GameHand(game.getPlayers());
-        game.addGameHand(gameHand);
         return gameHand;
     }
 

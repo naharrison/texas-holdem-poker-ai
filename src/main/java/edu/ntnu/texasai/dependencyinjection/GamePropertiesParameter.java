@@ -1,7 +1,7 @@
 package edu.ntnu.texasai.dependencyinjection;
 
 public enum GamePropertiesParameter {
-    DEMO, PHASE1, PHASE2, PHASE3;
+    DEMO, PHASE1, PHASE2, PHASE3, NAH;
 
     public static GamePropertiesParameter fromString(String s) {
         if (s.equals("phase1")) {
@@ -10,6 +10,8 @@ public enum GamePropertiesParameter {
             return PHASE2;
         } else if (s.equals("phase3")) {
             return PHASE3;
+        } else if (s.equals("nah")) {
+            return NAH;
         }
         return DEMO;
     }

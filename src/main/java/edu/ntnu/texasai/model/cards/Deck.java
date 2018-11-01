@@ -43,4 +43,14 @@ public class Deck {
         }
         return couplesOfCard;
     }
+
+    public void removeAllCards() {
+      cards.clear();
+    }
+
+    public void addCard(Card card) {
+        cards.add(card);
+    }
+
 }
+

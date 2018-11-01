@@ -24,6 +24,11 @@ public class GameHand {
         deck = new Deck();
     }
 
+    public GameHand(List<Player> players, Deck deck) {
+        this.players = new LinkedList<Player>(players);
+        this.deck = deck;
+    }
+
     public void nextRound() {
         bettingRounds.add(new BettingRound());
 

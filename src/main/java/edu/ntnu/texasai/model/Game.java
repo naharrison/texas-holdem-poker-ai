@@ -32,6 +32,10 @@ public class Game {
         gameHands.add(gameHand);
     }
 
+    public List<GameHand> getGameHands() {
+        return gameHands;
+    }
+
     public int gameHandsCount() {
         return gameHands.size();
     }

@@ -40,9 +40,7 @@ public class GameHandController {
         GameHand gameHand = createGameHand(game);
 
         Boolean haveWinner = false;
-        while (!gameHand.getBettingRoundName().equals(
-                BettingRoundName.POST_RIVER)
-                && !haveWinner) {
+        while (!gameHand.getBettingRoundName().equals(BettingRoundName.POST_RIVER) && !haveWinner) {
             haveWinner = playRound(gameHand);
         }
 
@@ -55,6 +53,22 @@ public class GameHandController {
         GameHand gameHand = new GameHand(game.getPlayers());
         game.addGameHand(gameHand);
         return gameHand;
+    }
+
+    public void playWithGameHand(Game game, GameHand gameHand) {
+        logger.log("-----------------------------------------");
+        logger.logImportant("Game Hand #" + (game.gameHandsCount() + 1));
+        logger.log("-----------------------------------------");
+        game.addGameHand(gameHand);
+
+        Boolean haveWinner = false;
+        while (!gameHand.getBettingRoundName().equals(BettingRoundName.POST_RIVER) && !haveWinner) {
+            haveWinner = playRound(gameHand);
+        }
+
+        if (!haveWinner) {
+            showDown(gameHand);
+        }
     }
 
     protected Boolean playRound(GameHand gameHand) {
@@ -73,8 +87,7 @@ public class GameHandController {
             BettingDecision bettingDecision = player.decide(gameHand);
 
             // We can't raise at second turn
-            if (turn > numberOfPlayersAtBeginningOfRound
-                    && bettingDecision.equals(BettingDecision.RAISE)) {
+            if (turn > numberOfPlayersAtBeginningOfRound && bettingDecision.equals(BettingDecision.RAISE)) {
                 bettingDecision = BettingDecision.CALL;
             }
 
